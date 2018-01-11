@@ -5,6 +5,7 @@ require 'dotenv'
 require "sinatra/activerecord"
 
 autoload :Notification, File.join(File.dirname(__FILE__),'models','notification')
+autoload :ServiceToken, File.join(File.dirname(__FILE__),'models','service_token')
 
 
 LOGIN_URL = '/'
@@ -26,13 +27,19 @@ helpers do
     settings.pub = Google::Apis::AndroidpublisherV2::AndroidPublisherService.new
     settings.pub.authorization = authorization
     auth_token = settings.pub.authorization.fetch_access_token!
-    session[:token] = auth_token["access_token"]
-    session[:token_expire] = Time.now + auth_token["expires_in"].to_i
+    st = ServiceToken.find_or_create_by(id:1)
+    st.token = auth_token["access_token"]
+    st.token_created_at = Time.now
+    st.token_expire_at = Time.now + auth_token["expires_in"].to_i
+    st.save
   end
 
   def token_for_publisher
+    st = ServiceToken.first
+    token_expire = st ? st.token_expire_at : Time.now
     scopes = Google::Apis::AndroidpublisherV2::AUTH_ANDROIDPUBLISHER
-    if settings.pub.blank? || session[:token_expire] < Time.now
+    st =
+    if settings.pub.blank? || token_expire <= Time.now
       credentials_for(scopes)
     end
     settings.pub
