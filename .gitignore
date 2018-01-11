@@ -1,2 +1,5 @@
 # ignore objects and archives, anywhere in the tree.
 key.json
+sinatra_application.sqlite3.db
+androidpublisherclient.sqlite3
+db/schema.rb

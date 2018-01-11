@@ -20,7 +20,7 @@ found in the tutorial in .. (LINK Coming Soon).
 
 ## Example Environment Settings
 
-For convenience, application credentials can be placed in a .json file in root of this project.
+For convenience, application credentials downloaded from Google Cloud Console can be placed in a key.json file in root of this project.
 
 
 # Running the samples
@@ -28,6 +28,8 @@ For convenience, application credentials can be placed in a .json file in root o
 To start the server, run
 
 ```
+bundle
+bundle exec rake db:migrate
 ruby app.rb
 ```
 
