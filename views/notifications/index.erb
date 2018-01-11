@@ -1,0 +1,21 @@
+<h2>Notifications</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Package</td>
+      <td>SKU</td>
+      <td>Params</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notifications.each do |n| %>
+    <tr>
+      <td><%= n.event_time %></td>
+      <td><%= n.package_name %></td>
+      <td><%= n.sku %></td>
+      <td><%= n.notification_params %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

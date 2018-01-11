@@ -1,0 +1,18 @@
+<form method="POST" action="/search_api_google">
+  <p>Your PackageName: <input type="text" name="package"></p>
+  <p>Your SKU: <input type="text" name="sku"></p>
+  <p>Your Token(if is purchase): <input type="text" name="token"></p>
+  <input type="submit">
+</form>
+<% if @error %>
+  <h3><%= @error %></h3>
+<% else %>
+  <% if @product_info %>
+    <h5>Product info</h5>
+    <p><%= @product_info.to_json %></p>
+    <% if @product_purchase %>
+      <h4>Product purchase</h4>
+      <p><%= @product_purchase.to_json %></p>
+    <% end %>
+  <% end %>
+<% end %>
