@@ -16,7 +16,7 @@ It illustrates a few key concepts:
 * Go to `Credentials` and create a new Service Account.
 
 Additional details on how to enable APIs and create credentials can be
-found in a quick tutorial in https://stackoverflow.com/questions/48391248/which-is-the-best-way-to-make-my-rails-project-an-androidpublisher-client?noredirect=1#comment83770590_48391248.
+found in a quick tutorial in https://stackoverflow.com/questions/48391248/which-is-the-best-way-to-make-my-rails-project-an-androidpublisher-client
 
 ## Example Environment Settings
 
